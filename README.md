@@ -158,7 +158,7 @@ Issues and PRs are welcome. Run `dotnet test --solution SecureMcp.slnx` and `./s
 
 ## 📺 Video
 
-Video walkthrough: <YOUTUBE_URL>
+Video walkthrough: https://www.youtube.com/watch?v=PdcKk5vWsOs
 
 ---
 
