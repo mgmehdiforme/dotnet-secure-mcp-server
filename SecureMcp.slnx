@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/SecureMcp.Demo/SecureMcp.Demo.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/SecureMcp.Server/SecureMcp.Server.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SecureMcp.Tests/SecureMcp.Tests.csproj" />
+  </Folder>
+</Solution>

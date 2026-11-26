@@ -1,0 +1,9 @@
+**/bin
+**/obj
+**/*.db*
+.git
+.github
+assets
+tests
+samples
+.env

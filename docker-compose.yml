@@ -1,0 +1,14 @@
+services:
+  mcp:
+    build: .
+    env_file: .env
+    ports:
+      - "127.0.0.1:5080:8080"   # published on loopback only
+    volumes:
+      - mcp-data:/data
+    read_only: true
+    tmpfs: [ /tmp ]
+    security_opt: [ "no-new-privileges:true" ]
+    restart: unless-stopped
+volumes:
+  mcp-data:

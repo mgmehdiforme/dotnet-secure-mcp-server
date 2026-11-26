@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - name: Build (warnings are errors)
+        run: dotnet build SecureMcp.slnx -c Release
+      - name: Test
+        run: dotnet test --solution SecureMcp.slnx -c Release --no-build
+      - name: End-to-end attack demo
+        run: ./scripts/demo.sh
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t secure-mcp-server .
+      - name: Image starts and refuses to run without keys
+        run: |
+          if docker run --rm secure-mcp-server 2>&1 | tee out.txt; then echo "expected failure"; exit 1; fi
+          grep -q "No API keys configured" out.txt
